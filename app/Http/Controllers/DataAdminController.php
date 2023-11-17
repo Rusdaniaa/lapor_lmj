@@ -4,29 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
-class UserController extends Controller
+class DataAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $perPage = $request->input('perPage', 10);
+        $keyword = $request->input('search', '');
+
+        $adminUsers = User::where('role', 'admin')
+            ->where(function ($query) use ($keyword) {
+                $query->where('name', 'like', "%$keyword%")
+                    ->orWhere('alamat', 'like', "%$keyword%")
+                    ->orWhere('email', 'like', "%$keyword%");
+            })
+            ->paginate($perPage);
+
+        return view('superadmin.data-admin', [
+            'adminUsers' => $adminUsers,
+            'perPage' => $perPage,
+            'keyword' => $keyword,
+        ]);
     }
-    public function showAdminUsers(){
 
-
-        $adminUsers = User::where('role', 'admin')->get();
-
-        return view('superadmin.data-admin', ['adminUsers' => $adminUsers]);
-    }
-
-    public function showValidatorUsers(){
-        $validatorUsers = User::where('role', 'validator')->get();
-
-        return view('superadmin.data-validator', ['validatorUsers' => $validatorUsers]);
-    }
     /**
      * Show the form for creating a new resource.
      */

@@ -52,19 +52,19 @@
 function changeShowEntries() {
     var perPage = document.getElementById('showEntries').value;
     var keyword = "{{ $keyword ?? '' }}";
-    window.location.href = "{{ url('dinas') }}?perPage=" + perPage + "&search=" + keyword;
+    window.location.href = "{{ url('data-admin') }}?perPage=" + perPage + "&search=" + keyword;
 }
 
 function searchData() {
-    var keyword = document.getElementById('searchInput').value;
+  var keyword = document.getElementById('searchInput').value;
     var perPage = "{{ $perPage ?? '' }}";
-    window.location.href = "{{ url('dinas') }}?search=" + keyword + "&perPage=" + perPage;
+    window.location.href = "{{ url('data-admin') }}?search=" + keyword + "&perPage=" + perPage;
 }
 
 
-    document.getElementById('updateForm').addEventListener('submit', function() {
+    //document.getElementById('updateForm').addEventListener('submit', function() {
         // Handle the submission of the update form
-    });
+    //});
 
 </script>
 

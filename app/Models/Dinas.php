@@ -13,4 +13,9 @@ class Dinas extends Model
         return $this-> hasMany(User::class);
     }
 
+    protected $fillable = [
+        'nama_dinas',
+        'alamat',
+    ];
+
 }

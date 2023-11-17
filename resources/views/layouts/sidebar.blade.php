@@ -37,7 +37,7 @@
                         </a>
                         <ul class="submenu ">
                             <li class="submenu-item ">
-                                <a href="{{ url('/admin/users') }}">Data Admin</a>
+                                <a href="{{ url('data-admin') }}">Data Admin</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{url('/validator/users')}}">Data Validator</a>
