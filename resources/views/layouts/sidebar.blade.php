@@ -40,7 +40,7 @@
                                 <a href="{{ url('data-admin') }}">Data Admin</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="{{url('/validator/users')}}">Data Validator</a>
+                                <a href="{{url('data-validator')}}">Data Validator</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{url('/dinas')}}">Data Dinas</a>

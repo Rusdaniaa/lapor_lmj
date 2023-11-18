@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataAdminController;
+use App\Http\Controllers\DataValidatorController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\PengaduController;
 use App\Http\Controllers\UserController;
@@ -29,28 +30,10 @@ Route::controller(UserController::class)->group(function () {
         Route::put('admins/{id}','update');
         Route::delete('admins/{id}');
 });
-
-//Route::controller(DinasController::class)->group(function(){
- //       Route::get('dinas', 'index');
-   //     Route::get('/dinas/form', 'showForm');
-     //   Route::get('/dinas/create', 'create');
-       // Route::post('/dinas/store', 'store');
-        //Route::get('/dinas/{id}/edit', 'showEdit');
-        //Route::put('/dinas/{dataDinas}', 'update');
-//});
-
-
-
 Route::resource('dinas', DinasController::class);
 Route::resource('data-admin', DataAdminController::class);
-
-
-Route::controller(PengaduController::class)->group(function(){
-    Route::get('pengadu', 'index');
-});
-
-
-
+Route::resource('data-validator', DataValidatorController::class);
+Route::resource('pengadu', PengaduController::class);
 
 Route::get('/', function () {
     return view('welcome');

@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pengadu;
-class PengaduController extends Controller
+use App\Models\User;
+
+class DataValidatorController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-
         $perPage = $request->input('perPage', 10);
         $keyword = $request->input('search', '');
 
-        $dataPengadus = Pengadu::where('nama', 'like', "%$keyword%")
-        ->orWhere('alamat', 'like', "%$keyword%")
-        ->paginate($perPage);
+        $validatorUsers= User::where('role', 'validator')
+            ->where(function ($query) use ($keyword) {
+                $query->where('name', 'like', "%$keyword%")
+                    ->orWhere('alamat', 'like', "%$keyword%")
+                    ->orWhere('email', 'like', "%$keyword%");
+            })
+            ->paginate($perPage);
 
-        return view('superadmin.data-pengadu', [
-            'dataPengadus' => $dataPengadus,
+        return view('superadmin.data-validator', [
+            'validatorUsers' => $validatorUsers,
             'perPage' => $perPage,
             'keyword' => $keyword,
         ]);
-       // return view('superadmin.data-pengadu', ['dataPengadus' => $dataPengadus]);
     }
 
     /**

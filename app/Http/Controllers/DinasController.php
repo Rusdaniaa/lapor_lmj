@@ -18,8 +18,8 @@ class DinasController extends Controller
         $keyword = $request->input('search', '');
 
         $dataDinass = Dinas::where('nama_dinas', 'like', "%$keyword%")
-    ->orWhere('alamat', 'like', "%$keyword%")
-    ->paginate($perPage);
+        ->orWhere('alamat', 'like', "%$keyword%")
+        ->paginate($perPage);
 
 
 

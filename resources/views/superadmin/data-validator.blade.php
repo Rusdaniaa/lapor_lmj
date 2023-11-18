@@ -1,4 +1,4 @@
-@extends('superadmin.app-su')
+@extends('superadmin.app-validator')
 
 @section('content')
 <div class="page-heading">
@@ -33,6 +33,26 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
                 @endif
 
+                <div class="table-controls d-flex justify-content-between align-items-center">
+
+                    <div class="left-controls">
+                        Show
+                        <label class="me-2">
+                            <select id="showEntries" class="form-select form-select-sm" onchange="changeShowEntries()">
+                                <option {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+                                <option {{ $perPage == 25 ? 'selected' : '' }}>25</option>
+                                <option {{ $perPage == 50 ? 'selected' : '' }}>50</option>
+                                <option {{ $perPage == -1 ? 'selected' : '' }}>All</option>
+                            </select>
+                        </label>
+                        entries
+                    </div>
+                    <div class="right-controls">
+                        <label class="me-2">Search:</label>
+                        <input type="search" id="searchInput" class="form-control form-control-sm" value="{{ $keyword }}" oninput="searchData()">
+                    </div>
+                </div>
+
                 <table class="table" id="table1">
                     <thead>
                         <tr>
@@ -62,6 +82,20 @@
 
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="left-controls">
+                        <div class="dataTables_info" id="table1_info" role="status" aria-live="polite">
+                            Showing <span id="showingFrom">{{ $validatorUsers->firstItem() }}</span> to <span id="showingTo">{{$validatorUsers->lastItem() }}</span> of {{ $validatorUsers->total() }} entries
+                        </div>
+                    </div>
+                    <div class="right-controls text-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="table1_paginate">
+                            @if ($validatorUsers->total() > 0)
+                                {{ $validatorUsers->links('superadmin.pagination-admin') }}
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
