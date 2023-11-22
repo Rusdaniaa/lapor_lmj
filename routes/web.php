@@ -4,7 +4,10 @@ use App\Http\Controllers\DataAdminController;
 use App\Http\Controllers\DataValidatorController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\PengaduController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JelajahController;
+use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +37,9 @@ Route::resource('dinas', DinasController::class);
 Route::resource('data-admin', DataAdminController::class);
 Route::resource('data-validator', DataValidatorController::class);
 Route::resource('pengadu', PengaduController::class);
-
+Route::resource('pengaduan', PengaduanController::class);
+Route::resource('jelajah', JelajahController::class);
+Route::resource('tentang', TentangController::class);
 Route::get('/', function () {
     return view('welcome');
 });
