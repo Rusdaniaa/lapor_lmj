@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\DataAdminController;
+use App\Http\Controllers\DataPengaduanController;
 use App\Http\Controllers\DataValidatorController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\PengaduController;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelajahController;
+use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +42,14 @@ Route::resource('pengadu', PengaduController::class);
 Route::resource('pengaduan', PengaduanController::class);
 Route::resource('jelajah', JelajahController::class);
 Route::resource('tentang', TentangController::class);
+Route::resource('data-pengaduan', DataPengaduanController::class);
+Route::prefix('superadmin')->group(function () {
+// Route untuk halaman dashboard admin
+Route::get('/dashboard', [SuperadminController::class, 'dashboard'])->name('superadmin.dashboard');
+
+// Route untuk halaman pengaturan admin
+//Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+});
 Route::get('/', function () {
     return view('welcome');
 });

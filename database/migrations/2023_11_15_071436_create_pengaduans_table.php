@@ -20,8 +20,8 @@ return new class extends Migration
             //$table->foreignId('id_validasi')->constrained('validasi_status');
             //$table->foreignId('id_dinas')->constrained('dinas');
             $table->unsignedBigInteger('pengadu_id');
-            $table->foreign('pengadu_id')->references('id')->on('pengadus');
-            //$table->foreignId('id_status')->constrained('pengaduan_status');
+            $table->foreign('pengadu_id')->references('id')->on('pengadus')->onDelete('cascade');
+            $table->enum('status_pengaduans', ['Belum ada tanggapan', 'Sudah ditanggapi']);
             $table->timestamps();
         });
     }

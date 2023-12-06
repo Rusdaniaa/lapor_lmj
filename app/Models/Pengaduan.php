@@ -10,6 +10,7 @@ class Pengaduan extends Model
     use HasFactory;
 
     public function pengadu(){
-        return $this->belongsTo(Pengadu::class);
+        return $this->belongsTo(Pengadu::class, 'id');
+        return $this->belongsTo(StatusPengaduan::class, 'status_pengaduan');
     }
 }

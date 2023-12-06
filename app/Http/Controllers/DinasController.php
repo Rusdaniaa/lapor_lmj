@@ -107,6 +107,9 @@ class DinasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dataDinas = Dinas::findOrFail($id);
+        $dataDinas->delete();
+
+        return redirect('dinas')->with('success', 'Data berhasil dihapus!');
     }
 }
