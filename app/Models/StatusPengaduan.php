@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatusPengaduan extends Model
 {
-    public function pengaduans(){
-        return $this->hasMany(Pengaduan::class, 'status_pengaduans');
-    }
+    protected $fillable = [
+        'status',
+    ];
+
     use HasFactory;
 }

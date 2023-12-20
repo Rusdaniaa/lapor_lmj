@@ -11,7 +11,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('pengaduan')}}" class="active">Beranda</a></li>
+                        <li><a href="{{url('pengaduan')}}">Beranda</a></li>
                         <li><a href="{{url('jelajah')}}">Jelajah Lapor</a></li>
                         <li><a href="{{url('tentang')}}" >Tentang Lapor</a></li>
                     </ul>

@@ -2049,6 +2049,14 @@ Reservation Page Style
   position: relative;
   padding-bottom: 25px;
 }
+.second-page-heading h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 25px;
+  }
 
 .second-page-heading h4::after {
   position: absolute;
@@ -2124,7 +2132,6 @@ Reservation Page Style
 
 .reservation-form {
   margin-top: -189px; /* Adjust this value as needed */
-
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

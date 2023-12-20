@@ -20,80 +20,98 @@
       <div class="row">
 
         <div class="col-lg-12">
-          <form id="reservation-form" name="gs" method="submit" role="search" action="#">
+             <!-- Menampilkan pesan kesalahan jika ada -->
+             @if(session('error'))
+             <div class="alert alert-danger">
+                 {{ session('error') }}
+             </div>
+         @endif
+            <form id="reservation-form" name="gs" method="post" role="search" action="{{ url('pengaduan') }}" enctype="multipart/form-data">
+            @csrf
             <div class="row">
               <div class="col-lg-12">
                 <h4>Kirim <em>Pengaduan</em> Anda </h4>
               </div>
               <div class="col-lg-12">
                   <fieldset>
-                      <label for="Name" class="form-label">Nama</label>
-                      <input type="text" name="Name" class="Name" placeholder="Nama" autocomplete="on" required>
+                      <label for="nama" class="form-label">Nama</label>
+                      <input type="text" name="nama" class="Name" placeholder="Nama" autocomplete="on" required>
                   </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                    <label for="Number" class="form-label">No. KTP</label>
-                    <input type="text" name="Number" class="Number" placeholder="No KTP" autocomplete="on" required>
+                    <label for="no_ktp" class="form-label">No. KTP</label>
+                    <input type="text" name="no_ktp" class="Number" placeholder="No KTP" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
-                    <label for="Number" class="form-label">RT</label>
-                    <input type="text" name="Number" class="Number" placeholder="RT" autocomplete="on" required>
+                    <label for="kecamatan" class="form-label">Kecamatan</label>
+                    <input type="text" name="kecamatan" class="Number" placeholder="RT" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
-                    <label for="Number" class="form-label">RW</label>
-                    <input type="text" name="Number" class="Number" placeholder="RW" autocomplete="on" required>
+                    <label for="kelurahan" class="form-label">Kelurahan</label>
+                    <input type="text" name="kelurahan" class="Number" placeholder="RW" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="rt" class="form-label">RT</label>
+                    <input type="text" name="rt" class="Number" placeholder="RT" autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="rw" class="form-label">RW</label>
+                    <input type="text" name="rw" class="Number" placeholder="RW" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
                 <fieldset>
-                    <label for="Number" class="form-label">Alamat</label>
-                    <input type="text" name="Number" class="Number" placeholder="Alamat" autocomplete="on" required>
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <input type="text" name="alamat" class="Name" placeholder="Alamat" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
-                    <label for="Number" class="form-label">Email</label>
-                    <input type="text" name="Number" class="Number" placeholder="Email" autocomplete="on" required>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" name="email" class="Name" placeholder="Email" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-6">
                 <fieldset>
-                    <label for="Number" class="form-label">No. HP</label>
-                    <input type="text" name="Number" class="Number" placeholder="No. HP" autocomplete="on" required>
+                    <label for="no_hp" class="form-label">No. HP</label>
+                    <input type="text" name="no_hp" class="Number" placeholder="No. HP" autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-12">
                   <fieldset>
-                      <label for="chooseDestination" class="form-label">Pengaduan Kepada</label>
-                      <select name="Destination" class="form-select" aria-label="Default select example" id="chooseCategory" onChange="this.form.click()">
+                      <label for="dinas_id" class="form-label">Pengaduan Kepada</label>
+                      <select name="dinas_id" class="form-select" aria-label="Default select example" id="chooseCategory" onChange="this.form.click()">
                           <option selected>---SKPD---</option>
-                          <option value="Italy, Roma">Italy, Roma</option>
-                          <option value="France, Paris">France, Paris</option>
-                          <option value="Engaland, London">Engaland, London</option>
-                          <option value="Switzerland, Lausanne">Switzerland, Lausanne</option>
+                      @foreach($dinasOptions as $dinas)
+                          <option value="{{ $dinas->id }}">{{ $dinas->nama_dinas }}</option>
+                      @endforeach
                       </select>
                   </fieldset>
               </div>
 
               <div class="col-lg-12">
                 <fieldset>
-                    <label for="Complaint" class="form-label">Isi Pengaduan</label>
-                    <textarea name="Complaint" class="form-textarea" placeholder="Tuliskan pengaduan Anda di sini..." rows="4" required></textarea>
+                    <label for="isi_pengaduan" class="form-label">Isi Pengaduan</label>
+                    <textarea name="isi_pengaduan" class="form-textarea" placeholder="Tuliskan pengaduan Anda di sini..." rows="4" required></textarea>
                 </fieldset>
             </div>
 
             <div class="col-lg-12">
                 <fieldset>
-                    <label for="media" id="file-label">
-                        File foto atau video:
+                    <label for="file" id="file-label">
+                        Unggah File foto atau video (jika ada):
                    </label>
                    <div class="file-input-container" id="file-input-container">
-                       <input type="file" id="media" name="media" accept="image/*, video/*" />
+                       <input type="file" id="media" name="file" accept="image/*, video/*" />
                        <label for="media" class="upload-icon">
                            <i class="fas fa-cloud-upload-alt"></i>
                            <p>Upload File</p>
@@ -103,7 +121,7 @@
             </div>
               <div class="col-lg-12">
                   <fieldset>
-                      <button class="main-button">Ajukan Sekarang!</button>
+                      <button class="main-button" type="submit">Ajukan Sekarang!</button>
                   </fieldset>
               </div>
             </div>
@@ -119,7 +137,7 @@
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading text-center">
             <h2>Lapor Lumajang Terkini </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+
           </div>
         </div>
         <div class="col-lg-6 col-sm-6">
@@ -163,21 +181,21 @@
               </div>
               <div class="col-lg-6 align-self-center">
                 <div class="content">
-                  <span class="info">*Belum ada tanggapan</span>
-                  <h4>Venezia Italy Ipsum</h4>
+                  <span class="info">*Sudah ditanggapi</span>
+                  <h4>Indah</h4>
                   <div class="row">
                     <div class="col-6">
                       <i class="fa fa-clock"></i>
-                      <span class="list">5 Days</span>
+                      <span class="list">22 November 2023</span>
                     </div>
                     <div class="col-6">
                       <i class="fa fa-map"></i>
-                      <span class="list">Daily Places</span>
+                      <span class="list">Dinas Perhubungan</span>
                     </div>
                   </div>
                   <p>Lorem ipsum dolor sit amet dire consectetur adipiscing elit.</p>
                   <div class="main-button">
-                    <a href="reservation.html">Make a Reservation</a>
+                    <a href="lapor-index-formpengaduan.html">Selengkapnya</a>
                   </div>
                 </div>
               </div>
@@ -194,21 +212,21 @@
               </div>
               <div class="col-lg-6 align-self-center">
                 <div class="content">
-                  <span class="info">**Undefined</span>
-                  <h4>Glasgow City Lorem</h4>
+                  <span class="info">*Sudah ditanggapi</span>
+                  <h4>Indah</h4>
                   <div class="row">
                     <div class="col-6">
                       <i class="fa fa-clock"></i>
-                      <span class="list">5 Days</span>
+                      <span class="list">22 November 2023</span>
                     </div>
                     <div class="col-6">
                       <i class="fa fa-map"></i>
-                      <span class="list">Daily Places</span>
+                      <span class="list">Dinas Perhubungan</span>
                     </div>
                   </div>
                   <p>Lorem ipsum dolor sit amet dire consectetur adipiscing elit.</p>
                   <div class="main-button">
-                    <a href="reservation.html">Make a Reservation</a>
+                    <a href="lapor-index-formpengaduan.html">Selengkapnya</a>
                   </div>
                 </div>
               </div>
@@ -225,21 +243,21 @@
               </div>
               <div class="col-lg-6 align-self-center">
                 <div class="content">
-                  <span class="info">*Offer Until 24th March</span>
-                  <h4>Glasgow City Lorem</h4>
+                  <span class="info">*Sudah ditanggapi</span>
+                  <h4>Indah</h4>
                   <div class="row">
                     <div class="col-6">
                       <i class="fa fa-clock"></i>
-                      <span class="list">5 Days</span>
+                      <span class="list">22 November 2023</span>
                     </div>
                     <div class="col-6">
                       <i class="fa fa-map"></i>
-                      <span class="list">Daily Places</span>
+                      <span class="list">Dinas Perhubungan</span>
                     </div>
                   </div>
-                  <p>This free CSS template is provided by Template Mo website.</p>
+                  <p>Lorem ipsum dolor sit amet dire consectetur adipiscing elit.</p>
                   <div class="main-button">
-                    <a href="reservation.html">Make a Reservation</a>
+                    <a href="lapor-index-formpengaduan.html">Selengkapnya</a>
                   </div>
                 </div>
               </div>

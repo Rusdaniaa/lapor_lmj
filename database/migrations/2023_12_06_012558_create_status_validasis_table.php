@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('status_validasis', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
             $table->timestamps();
         });
     }

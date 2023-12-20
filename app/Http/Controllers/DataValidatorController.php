@@ -35,7 +35,7 @@ class DataValidatorController extends Controller
      */
     public function create()
     {
-        //
+        return response(view('superadmin.form-validator'));
     }
 
     /**

@@ -34,7 +34,7 @@ class DataAdminController extends Controller
      */
     public function create()
     {
-        //
+        return response(view('superadmin.form-admin'));
     }
 
     /**
@@ -42,7 +42,18 @@ class DataAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_dinas' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+            // tambahkan aturan validasi lainnya sesuai kebutuhan
+        ]);
+
+        try {
+            User::create($validatedData);
+            return redirect('data-admin')->with('success', 'Data berhasil dibuat!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+        }
     }
 
     /**

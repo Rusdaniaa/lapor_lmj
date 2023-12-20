@@ -5,10 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h4>Book Prefered Deal Here</h4>
-          <h2>Make Your Reservation</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt uttersi labore et dolore magna aliqua is ipsum suspendisse ultrices gravida</p>
-          <div class="main-button"><a href="about.html">Discover More</a></div>
+          <h3>Panduan Lapor Lumajang</h3>
         </div>
       </div>
     </div>
@@ -45,22 +42,32 @@
   <div class="visit-country">
     <div class="container">
       <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-12">
           <div class="section-heading">
-            <h2>Visit One Of Our Countries Now</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            <h2>Lapor Lumajang</h2>
+            <p>Lapor Lumajang merupakan layanan aspirasi dan pengaduan masyarakat Kabupaten Lumajang.Dalam menggalang partisipasi masyarakat dan memperkuat interaksi antara pemerintah dengan warganya, Layanan Aspirasi dan Pengaduan Masyarakat menjadi sebuah inisiatif yang krusial. Layanan ini memberikan wadah bagi masyarakat untuk menyuarakan aspirasi, keluhan, dan ide-ide konstruktif, sehingga membantu meningkatkan pelayanan publik dan membangun komunikasi yang lebih baik antara pemerintah dan masyarakat.</p>
           </div>
           <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-12">
               <div class="section-heading">
                 <h4>1. data diri</h4>
+                <p>Siapkan Data yang akan anda adukan. Pastikan KTP anda yang masih aktif dan valid.</p>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-8">
               <div class="section-heading">
-                <h4>1. data diri</h4>
+                <h4>2. Lengkapi Formulir</h4>
+                <p>Lengkapi Form isian pengaduan sesuai data yang dibutuhkan dan data identitas harus sesuai dengan data pada KTP anda yang masih aktif.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="section-heading">
+                <h4>3. Tanggapan Pengaduan</h4>
+                <p>Setelah mengisi formulir, pengaduan akan diteruskan kepada dinas yang bersangkutan, dan akan di tanggapi jika data yang dikirimkan valid.</p>
               </div>
             </div>
           </div>

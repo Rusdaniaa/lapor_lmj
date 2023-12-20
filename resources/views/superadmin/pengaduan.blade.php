@@ -59,6 +59,7 @@
                             <th>Foto dan Video</th>
                             <th>Status Validasi</th>
                             <th>Status Pengaduan</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
